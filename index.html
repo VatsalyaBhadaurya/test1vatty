@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('1.png') center/cover no-repeat fixed;
+        }
+
+        header {
+            background-color: #101010;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .logo {
+            margin: 0px 0;
+            font-size: 5px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #searchBar {
+            padding: 8px;
+            margin: 10px;
+            width: 70%;
+        }
+
+        main {
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 30px;
+            margin: 100px;
+        }
+
+        .button {
+            display: inline-block;
+            width: 60%;
+            margin: 0 auto;
+            padding: 15px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #5a7eb5;
+            border-radius: 150px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+           background-image: url('2.gif');
+           background-size: cover;
+	   background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .button:focus {
+            background-image: url('2.gif');
+            background-size: cover;
+	    background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .button:animated {
+            background-image: none;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.01);
+            z-index: -1;
+        }
+    </style>
+    <title>Your Page Title</title>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><img src="mindmatters.png" alt="Mind Matters Logo"></div>
+        <input type="text" id="searchBar" placeholder="Search mental health topics">
+        <button onclick="search()">Search</button>
+    </header>
+
+    <main>
+        <div class="buttons">
+            <a href="nutrition.html" class="button" tabindex="1">Nutrition Score</a>
+            <a href="mood.html" class="button" tabindex="2">Mood Predictor</a>
+            <a href="breathing.html" class="button" tabindex="3">Breathing Exercise</a>
+            <a href="managemeds.html" class="button" tabindex="4">Manage Meds</a>
+        </div>
+    </main>
+
+    <script>
+        function search() {
+            const searchQuery = document.getElementById('searchBar').value.trim();
+
+            if (searchQuery === '') {
+                return;
+            }
+
+            const searchUrl = `https://www.mayoclinic.org/diseases-conditions/${encodeURIComponent(searchQuery)}`;
+
+            window.open(searchUrl, '_blank');
+
+            document.getElementById('searchBar').value = '';
+        }
+    </script>
+
+</body>
+</html>
